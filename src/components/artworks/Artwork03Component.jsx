@@ -72,7 +72,7 @@ function Rig({ radius = 20 }) {
     state.camera.lookAt(0, 0, 0);
   });
 }
-export const ArtWork01Component = () => {
+export const ArtWork03Component = () => {
   const { dash, count, radius } = useControls({
     dash: { value: 0.9, min: 0, max: 0.99, step: 0.01 },
     count: { value: 200, min: 0, max: 200, step: 1 },
