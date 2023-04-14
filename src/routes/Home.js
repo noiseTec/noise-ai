@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import noiseLogo from "../assets/logo.png";
 import Layout from "../components/shared/Layout";
+import { Arrow } from "../assets/icon";
 
 const Home = () => {
     return (
@@ -12,10 +13,10 @@ const Home = () => {
                 </div>
                 <Link
                     to={"interactive"}
-                    className="flex items-center justify-center gap-2 font-semibold uppercase mt-auto"
+                    className="flex items-center justify-center font-semibold uppercase mt-auto"
                 >
-                    <span className="material-symbols-outlined">play_arrow</span>
                     Enter Exhibition
+                    <Arrow className={'rotate-180'} />
                 </Link>
             </div>
         </Layout>

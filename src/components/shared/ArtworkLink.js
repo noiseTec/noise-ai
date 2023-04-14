@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Greater } from "../../assets/icon";
 
 const ArtworkLink = ({ url, name, onClick, selected }) => {
     return (
@@ -9,8 +10,7 @@ const ArtworkLink = ({ url, name, onClick, selected }) => {
             to={url}
             className="p-10 pt-0 border-b flex flex-col overflow-hidden"
         >
-            <div className="flex items-center justify-start gap-4 font-semibold text-xl z-10 pt-10 bg-[#080808]">
-                <span className={`material-symbols-outlined ${selected ? 'rotate-90' : ''} duration-300`}>play_arrow</span>
+            <div className="flex items-center justify-start gap-4 font-semibold text-xl z-10 pt-10 bg-[#080808]">                <Greater className={`${selected ? 'rotate-90' : ''}`} />
                 <div className="font-semibold text-lg uppercase">{name}</div>
             </div>
             {selected && (

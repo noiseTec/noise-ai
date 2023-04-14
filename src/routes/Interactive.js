@@ -10,6 +10,7 @@ import {
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import ArtworkLink from "../components/shared/ArtworkLink";
 import { ArtWork01Component } from "../components/artworks/ArtWork01Component";
+import { Arrow } from "../assets/icon";
 
 const Interactive = () => {
     const location = useLocation();
@@ -61,11 +62,9 @@ const Interactive = () => {
                             <div className="header p-8 border-b border-white flex justify-between gap-4 items-center relative">
                                 <Link
                                     to="/"
-                                    className="p-2 border border-white flex items-center justify-center rounded-full hover:text-black hover:bg-white duration-300"
+                                    className="border border-white flex items-center justify-center rounded-full hover:text-black hover:bg-white duration-300"
                                 >
-                                    <span className="material-symbols-outlined rotate-180">
-                                        play_arrow
-                                    </span>
+                                    <Arrow className="hover:fill-black duration-300" />
                                 </Link>
                                 <button onClick={() => setOpen(false)}>
                                     <span className="material-symbols-outlined text-[50px]">
