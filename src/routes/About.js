@@ -10,7 +10,7 @@ const About = () => {
                     About Us
                 </div>
                 <img src={Team} alt="about-us" className="max-h-[500px]" />
-                <div className="max-w-[700px] mt-7 text-center text-xs sm:text-base">
+                <div className="max-w-[700px] mt-8 text-center text-xs sm:text-base">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
                     a sodales est, eget dignissim tellus. Praesent sed luctus urna. Fusce
                     sit amet est non nisl vestibulum pharetra vel sollicitudin enim.
