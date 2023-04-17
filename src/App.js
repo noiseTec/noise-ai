@@ -1,9 +1,9 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import NavLink from "./components/shared/NavLink";
-import { Arrow } from "./assets/icon";
 import React, { useState } from "react";
 import { LayoutGroup } from "framer-motion";
+import BackHomeArrow from "./components/shared/BackHomeArrow";
 
 function App() {
   const location = useLocation();
@@ -19,10 +19,7 @@ function App() {
           <LayoutGroup>
             {linkArr.map((el, i) => (
               <React.Fragment key={i}>
-                <NavLink
-                  url={el}
-                  selected={selected === el}
-                />
+                <NavLink url={el} selected={selected === el} />
                 {i < linkArr.length - 1 && <span>|</span>}
               </React.Fragment>
             ))}
@@ -33,12 +30,7 @@ function App() {
       <Outlet />
       {location.pathname !== "/" &&
         location.pathname.split("/")[1] !== "interactive" && (
-          <Link
-            to=""
-            className="fixed text-lg bottom-4 left-4 border border-white flex items-center justify-center rounded-full hover:text-black hover:bg-white duration-300"
-          >
-            <Arrow className="hover:fill-black duration-300" />
-          </Link>
+          <BackHomeArrow className={"fixed"} />
         )}
     </main>
   );

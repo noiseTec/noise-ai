@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/shared/Layout";
-import {
-  Link,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import ArtworkLink from "../components/shared/ArtworkLink";
 import { ArtWork01Component } from "../components/artworks/ArtWork01Component";
-import { Arrow } from "../assets/icon";
+import BackHomeArrow from "../components/shared/BackHomeArrow";
 
 const Interactive = () => {
   const location = useLocation();
@@ -59,12 +53,7 @@ const Interactive = () => {
               className="side-bar flex flex-col w-[459px] max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
             >
               <div className="header p-8 border-b border-white flex justify-between gap-4 items-center relative">
-                <Link
-                  to="/"
-                  className="border border-white flex items-center justify-center rounded-full hover:text-black hover:bg-white duration-300"
-                >
-                  <Arrow className="hover:fill-black duration-300" />
-                </Link>
+                <BackHomeArrow />
               </div>
               <div className="link-container flex flex-col">
                 <LayoutGroup id="artwork-nav">
