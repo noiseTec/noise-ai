@@ -7,8 +7,6 @@ const Gallery = () => {
   const [imageList, setImageList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.count("render!");
-
   useEffect(() => {
     listAll(galleryListRef).then((res) => {
       res.items.forEach((el) => {
@@ -45,8 +43,23 @@ const Gallery = () => {
             </>
           ) : (
             <>
-              {imageList.map((el) => (
-                <div className="row-span-2 flex items-center justify-center">
+              {imageList.map((el, idx) => (
+                <div
+                  className="row-span-2 flex items-center justify-center"
+                  key={idx}
+                >
+                  <img
+                    src={el}
+                    alt=""
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              ))}
+              {imageList.map((el, idx) => (
+                <div
+                  className="row-span-2 flex items-center justify-center"
+                  key={idx}
+                >
                   <img
                     src={el}
                     alt=""

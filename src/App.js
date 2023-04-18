@@ -15,7 +15,10 @@ function App() {
   return (
     <main className="w-full h-full flex flex-col relative overflow-x-hidden">
       {location.pathname.split("/")[1] !== "interactive" && (
-        <div className="flex gap-8 justify-center py-10 max-w-full">
+        <div
+          id="navbar"
+          className="flex gap-8 justify-center py-10 max-w-full sticky top-0"
+        >
           <LayoutGroup>
             {linkArr.map((el, i) => (
               <React.Fragment key={i}>
