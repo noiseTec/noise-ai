@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Greater } from "../../assets/icon";
 
 const ArtworkLink = ({ url, name, onClick, selected }) => {
-  console.log(url)
   return (
     <motion.div>
       <NavLink

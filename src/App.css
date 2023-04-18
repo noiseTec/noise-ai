@@ -29,6 +29,19 @@ body {
   left: 0;
   background: linear-gradient(180deg, #080808 41.15%, rgba(8, 8, 8, 0) 100%);
 }
+
+a.active {
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+div.separator:has(+ a.active),
+a.active + div.separator {
+  height: 28px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -55,18 +55,6 @@ const Gallery = () => {
                   />
                 </div>
               ))}
-              {imageList.map((el, idx) => (
-                <div
-                  className="row-span-2 flex items-center justify-center"
-                  key={idx}
-                >
-                  <img
-                    src={el}
-                    alt=""
-                    className="w-full h-full object-cover rounded-md"
-                  />
-                </div>
-              ))}
             </>
           )}
         </div>
