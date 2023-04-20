@@ -1,6 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
+import ArtworkVideo from "./components/video.mp4";
+
 const VideoComponent = () => {
   const video = document.createElement("video");
   video.src = "/video.mp4";
@@ -27,7 +29,7 @@ export const ArtWork01Component = () => {
       <video
         id="artwork-song"
         className="w-full"
-        src="/video.mp4"
+        src={ArtworkVideo}
         autoPlay
         loop
       ></video>
