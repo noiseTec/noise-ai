@@ -1,11 +1,15 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
 import vertex from "./shader/vertex.glsl";
 import fragment from "./shader/fragment.glsl";
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { Effects } from "@react-three/drei";
+import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass";
 import { useSelector } from "react-redux";
 import { Vector2, Color } from "three";
 import { easing } from "maath";
+// eslint-disable-next-line no-undef
+extend({ GlitchPass });
 const VideoComponent = () => {
   const mesh = useRef();
   const mousePosition = useRef({ x: 0, y: 0 });
@@ -91,6 +95,9 @@ export const ArtWork01Component = () => {
       }}
     >
       {/* <Rig /> */}
+      <Effects>
+        <glitchPass attachArray="passes" />
+      </Effects>
       <VideoComponent />
     </Canvas>
   );
