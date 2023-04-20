@@ -1,37 +1,41 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import NavLink from "./components/shared/NavLink";
-import { ArtWork01Component } from "./components/artworks/ArtWork01Component";
+import React, { useState } from "react";
+import { LayoutGroup } from "framer-motion";
+import BackHomeArrow from "./components/shared/BackHomeArrow";
 
 function App() {
   const location = useLocation();
 
-  return (
-    <div>
-      <ArtWork01Component />
-    </div>
-    // <main className="w-full h-full flex flex-col overflow-auto overflow-x-hidden relative">
-    //   {location.pathname.split("/")[1] !== "interactive" && (
-    //     <div className="flex gap-8 justify-center mt-10">
-    //       <NavLink url="interactive" name="interactive" /> |
-    //       <NavLink url="gallery" name="gallery" /> |
-    //       <NavLink url="about" name="about" />
-    //     </div>
-    //   )}
+  const [selected] = useState(location.pathname.split("/")[1]);
 
-    //   <Outlet />
-    //   {location.pathname !== "/" &&
-    //     location.pathname.split("/")[1] !== "interactive" && (
-    //       <Link
-    //         to=""
-    //         className="absolute bottom-4 left-4 p-2 border border-white flex items-center justify-center rounded-full hover:text-black hover:bg-white duration-300"
-    //       >
-    //         <span className="material-symbols-outlined rotate-180">
-    //           play_arrow
-    //         </span>
-    //       </Link>
-    //     )}
-    // </main>
+  const linkArr = ["interactive", "gallery", "about"];
+
+  return (
+    <main className="w-full h-full flex flex-col relative overflow-x-hidden">
+      {location.pathname.split("/")[1] !== "interactive" && (
+        <div
+          id="navbar"
+          className="flex gap-8 justify-center py-10 max-w-full sticky top-0"
+        >
+          <LayoutGroup>
+            {linkArr.map((el, i) => (
+              <React.Fragment key={i}>
+                <NavLink url={el} selected={selected === el} />
+                {i < linkArr.length - 1 && <span>|</span>}
+              </React.Fragment>
+            ))}
+          </LayoutGroup>
+        </div>
+      )}
+
+      <Outlet />
+      {location.pathname !== "/" &&
+        location.pathname.split("/")[1] !== "interactive" && (
+          <BackHomeArrow className={"fixed"} />
+        )}
+    </main>
   );
 }
 
