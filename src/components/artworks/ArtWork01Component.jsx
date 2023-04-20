@@ -32,6 +32,7 @@ export const ArtWork01Component = () => {
         src={ArtworkVideo}
         autoPlay
         loop
+        controls
       ></video>
     </div>
     // <Canvas>
