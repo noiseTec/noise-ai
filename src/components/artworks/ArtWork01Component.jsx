@@ -6,11 +6,17 @@ const VideoComponent = () => {
   video.src = "/video.mp4";
   video.autoplay = true;
   video.loop = true;
-  video.play();
+  document.addEventListener(
+    "click",
+    () => {
+      video.play();
+    },
+    { once: true }
+  );
   const videoTexture = new THREE.VideoTexture(video);
+  const planeGeometry = new THREE.PlaneGeometry(20, 10);
   return (
-    <mesh>
-      <planeGeometry />
+    <mesh geometry={planeGeometry}>
       <meshBasicMaterial map={videoTexture} />
     </mesh>
   );
