@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/shared/Layout";
 import { getDownloadURL, listAll } from "firebase/storage";
-import { galleryListRef } from "../constants/appConstant";
+import {
+  galleryBigListRef,
+  galleryLongListRef,
+  gallerySquareListRef,
+  galleryTallListRef,
+} from "../constants/appConstant";
 
 const Gallery = () => {
-  const [imageList, setImageList] = useState([]);
+  const [verticalImageList, setVerticalImageList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    listAll(galleryListRef).then((res) => {
+    listAll(galleryBigListRef).then((res) => {
       res.items.forEach((el) => {
         getDownloadURL(el).then((url) => {
-          setImageList((curr) => [...curr, url]);
+          setVerticalImageList((curr) => [...curr, url]);
         });
       });
     });
+
     setLoading(false);
   }, []);
 
@@ -22,11 +28,8 @@ const Gallery = () => {
     <Layout>
       <div className="flex w-full  h-full items-center justify-center overflow-auto pb-4">
         <div
-          style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gridAutoRows: "200px",
-          }}
-          className="h-full w-full px-6 sm:max-w-screen-lg grid grid-flow-dense gap-4 "
+          id="gallery-container"
+          className="h-full w-full px-6 sm:max-w-screen-lg grid grid-flow-dense gap-4 justify-center"
         >
           {loading ? (
             <>
@@ -43,9 +46,46 @@ const Gallery = () => {
             </>
           ) : (
             <>
-              {imageList.map((el, idx) => (
+              {/* Square */}
+              {verticalImageList.map((el, idx) => (
+                <div className="flex items-center justify-center" key={idx}>
+                  <img
+                    src={el}
+                    alt=""
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              ))}
+              {/* Dai */}
+              {verticalImageList.map((el, idx) => (
                 <div
-                  className="row-span-2 flex items-center justify-center"
+                  className="flex col-span-2 items-center justify-center"
+                  key={idx}
+                >
+                  <img
+                    src={el}
+                    alt=""
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              ))}
+              {/* Cao */}
+              {verticalImageList.map((el, idx) => (
+                <div
+                  className="flex row-span-2 items-center justify-center"
+                  key={idx}
+                >
+                  <img
+                    src={el}
+                    alt=""
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              ))}
+              {/* Bu */}
+              {verticalImageList.map((el, idx) => (
+                <div
+                  className="flex col-span-2 row-span-2 items-center justify-center"
                   key={idx}
                 >
                   <img

@@ -50,6 +50,17 @@ a.active + div.separator {
   transform: translateX(0px);
 }
 
+#gallery-container {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-auto-rows: 200px;
+}
+
+@media screen and (max-width: 640px) {
+  #gallery-container {
+    grid-template-columns: auto;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
