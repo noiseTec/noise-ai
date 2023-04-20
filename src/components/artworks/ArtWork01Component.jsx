@@ -23,8 +23,17 @@ const VideoComponent = () => {
 };
 export const ArtWork01Component = () => {
   return (
-    <Canvas>
-      <VideoComponent />
-    </Canvas>
+    <div className="video-wrapper aspect-video flex items-center justify-center h-full">
+      <video
+        id="artwork-song"
+        className="w-full"
+        src="/video.mp4"
+        autoPlay
+        loop
+      ></video>
+    </div>
+    // <Canvas>
+    //   <VideoComponent />
+    // </Canvas>
   );
 };
