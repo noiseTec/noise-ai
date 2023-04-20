@@ -23,16 +23,17 @@ const Interactive = () => {
 
   const [selected, setSelected] = useState("song");
 
-  const [open, setOpen] = useState(false);
-
   document.onmousemove = handleMouseMove;
 
   function handleMouseMove(event) {
-    if (event.clientX <= 150 && open === false) {
-      setOpen(!open);
-    }
-    if (event.clientX >= 459 && open === true) {
-      setOpen(!open);
+    const sideBar = document.getElementById("side-bar");
+    if (sideBar) {
+      if (event.clientX <= 150) {
+        sideBar.classList.add("active");
+      }
+      if (event.clientX >= 459) {
+        sideBar.classList.remove("active");
+      }
     }
   }
 
@@ -55,37 +56,32 @@ const Interactive = () => {
     <Layout>
       <div className="flex w-full h-full relative overflow-hidden">
         <AnimatePresence mode="wait">
-          {open && (
-            <motion.div
-              initial={{ x: -459, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -459, opacity: 0 }}
-              transition={{ type: "tween" }}
-              className="side-bar hidden sm:flex flex-col w-[459px] max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
-            >
-              <div className="header p-8 border-b border-white flex justify-between gap-4 items-center relative">
-                <BackHomeArrow />
-              </div>
-              <div className="link-container flex flex-col">
-                <LayoutGroup id="artwork-nav">
-                  {linkArray.map((link) => {
-                    return (
-                      <ArtworkLink
-                        key={link.name}
-                        url={link.url}
-                        name={link.name}
-                        selected={selected === link.url}
-                        onClick={() => setSelected(link.url)}
-                      />
-                    );
-                  })}
-                </LayoutGroup>
-              </div>
-            </motion.div>
-          )}
+          <motion.div
+            id="side-bar"
+            className="side-bar duration-300 w-[459px] sm:flex flex-col max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
+          >
+            <div className="header p-8 border-b border-white flex justify-between gap-4 items-center relative">
+              <BackHomeArrow />
+            </div>
+            <div className="link-container flex flex-col">
+              <LayoutGroup id="artwork-nav">
+                {linkArray.map((link) => {
+                  return (
+                    <ArtworkLink
+                      key={link.name}
+                      url={link.url}
+                      name={link.name}
+                      selected={selected === link.url}
+                      onClick={() => setSelected(link.url)}
+                    />
+                  );
+                })}
+              </LayoutGroup>
+            </div>
+          </motion.div>
         </AnimatePresence>
 
-        <div className="mobile-nav sm:hidden stick h-min w-full pt-6 top-0 z-10 bg-[#080808] pb-2 flex flex-col gap-2">
+        <div className="mobile-nav sm:hidden fixed h-min w-full pt-6 top-0 z-10 bg-[#080808] pb-2 flex flex-col gap-2">
           <div className="flex items-center justify-center gap-3">
             {linkArray.map((link, i) => {
               return (
