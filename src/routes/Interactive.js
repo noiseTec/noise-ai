@@ -12,6 +12,10 @@ import ArtworkLink from "../components/shared/ArtworkLink";
 import { ArtWork01Component } from "../components/artworks/ArtWork01Component";
 import BackHomeArrow from "../components/shared/BackHomeArrow";
 import { Greater } from "../assets/icon";
+import { ArtWork02Component } from "../components/artworks/ArtWork02Component";
+import { ArtWork03Component } from "../components/artworks/Artwork03Component";
+import { ArtWork04Component } from "../components/artworks/Artwork04Component";
+import { ArtWork05Component } from "../components/artworks/Artwork05Component";
 
 const Interactive = () => {
   const location = useLocation();
@@ -109,7 +113,11 @@ const Interactive = () => {
         <div className="main-content grow overflow-hidden flex flex-col">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-              <Route path=":id" element={<ArtWork01Component />} />
+              <Route path="/song" element={<ArtWork01Component />} />
+              <Route path="/nghia" element={<ArtWork02Component />} />
+              <Route path="/viu" element={<ArtWork03Component />} />
+              <Route path="/boi" element={<ArtWork04Component />} />
+              <Route path="/vuong" element={<ArtWork05Component />} />
             </Routes>
           </AnimatePresence>
         </div>
