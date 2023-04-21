@@ -42,17 +42,19 @@ a.active + div.separator {
   height: 28px;
 }
 
+#gallery-container {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-auto-rows: 200px;
+}
+
 #side-bar {
   transform: translateX(-459px);
 }
 
-#side-bar.active {
-  transform: translateX(0px);
-}
-
-#gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-  grid-auto-rows: 200px;
+@media screen and (min-width: 641px) {
+  #side-bar.active {
+    transform: translateX(0px);
+  }
 }
 
 @media screen and (max-width: 640px) {
