@@ -29,7 +29,7 @@ const Gallery = () => {
       <div className="flex w-full  h-full items-center justify-center overflow-auto pb-4">
         <div
           id="gallery-container"
-          className="h-full w-full px-6 sm:max-w-screen-lg grid grid-flow-dense gap-4 justify-center"
+          className="h-full w-full px-6 sm:max-w-screen-md grid grid-flow-dense gap-2 justify-center"
         >
           {loading ? (
             <>
@@ -52,7 +52,7 @@ const Gallery = () => {
                   <img
                     src={el}
                     alt=""
-                    className="w-full h-full object-cover rounded-md"
+                    className="w-full h-full object-cover "
                   />
                 </div>
               ))}
@@ -65,7 +65,7 @@ const Gallery = () => {
                   <img
                     src={el}
                     alt=""
-                    className="w-full h-full object-cover rounded-md"
+                    className="w-full h-full object-cover "
                   />
                 </div>
               ))}
@@ -78,7 +78,7 @@ const Gallery = () => {
                   <img
                     src={el}
                     alt=""
-                    className="w-full h-full object-cover rounded-md"
+                    className="w-full h-full object-cover "
                   />
                 </div>
               ))}
@@ -91,7 +91,7 @@ const Gallery = () => {
                   <img
                     src={el}
                     alt=""
-                    className="w-full h-full object-cover rounded-md"
+                    className="w-full h-full object-cover "
                   />
                 </div>
               ))}

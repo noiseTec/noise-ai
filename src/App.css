@@ -43,7 +43,7 @@ a.active + div.separator {
 }
 
 #gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 200px;
 }
 
@@ -60,6 +60,13 @@ a.active + div.separator {
 @media screen and (max-width: 640px) {
   #gallery-container {
     grid-template-columns: auto;
+  }
+
+  #mobile-nav.open .description {
+    display: block;
+  }
+  #mobile-nav.open button {
+    transform: rotate(270deg);
   }
 }
 
