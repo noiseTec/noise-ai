@@ -4,7 +4,7 @@ import { MediaPineHandDetect } from "../mediaPipe/MediaPineHandDetect";
 const DetectorComponent = () => {
   const [webcamRef, canvasRef] = MediaPineHandDetect();
   return (
-    <div style={{ float: "right" }}>
+    <div>
       <center>
         <div>
           <WebCamComponent webcamRef={webcamRef} />

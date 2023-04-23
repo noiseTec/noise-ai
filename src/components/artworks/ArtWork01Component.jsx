@@ -8,6 +8,7 @@ import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass";
 import { useSelector } from "react-redux";
 import { Vector2, Color } from "three";
 import { easing } from "maath";
+import DetectorComponent from "../detector/DetectorComponent";
 // eslint-disable-next-line no-undef
 extend({ GlitchPass });
 const VideoComponent = () => {

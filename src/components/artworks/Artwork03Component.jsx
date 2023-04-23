@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Vector2, Color } from "three";
 import { easing } from "maath";
+import { Effect } from "../Effect";
 const VideoComponent = () => {
   const mesh = useRef();
   const mousePosition = useRef({ x: 0, y: 0 });
@@ -92,6 +93,7 @@ export const ArtWork03Component = () => {
     >
       {/* <Rig /> */}
       <VideoComponent />
+      <Effect />
     </Canvas>
   );
 };

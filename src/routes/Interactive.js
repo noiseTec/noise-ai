@@ -15,7 +15,8 @@ import { Greater } from "../assets/icon";
 import { ArtWork02Component } from "../components/artworks/ArtWork02Component";
 import { ArtWork03Component } from "../components/artworks/Artwork03Component";
 import { ArtWork04Component } from "../components/artworks/Artwork04Component";
-import { ArtWork05Component } from "../components/artworks/Artwork05Component";
+import ArtWork05Component from "../components/artworks/Artwork05Component";
+import DetectorComponent from "../components/detector/DetectorComponent";
 
 const Interactive = () => {
   const location = useLocation();
@@ -172,7 +173,9 @@ const Interactive = () => {
             </button>
           </div>
         </div>
-
+        <div style={{ position: "fixed", zIndex: 10000 }}>
+          <DetectorComponent />
+        </div>
         <div className="main-content grow overflow-hidden flex flex-col">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>

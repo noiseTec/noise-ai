@@ -1,10 +1,11 @@
 export const cameraConfig = {
   position: "absolute",
-  marginLeft: "auto",
-  marginRight: "auto",
-  left: 0,
-  textAlign: "center",
+  // marginLeft: "auto",
+  marginLeft: "20px",
+  // left: 100,
+  // float: "right",
+  transform: "translate(150%, 0)",
   zIndex: 9,
-  width: 540,
-  height: 380,
+  width: 340,
+  height: 200,
 };
