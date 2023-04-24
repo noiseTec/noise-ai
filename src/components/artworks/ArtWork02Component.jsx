@@ -116,13 +116,16 @@ export default function ArtWork05Component() {
   function onResults(result) {
     // console.log(result)
     if (result.multiHandLandmarks.length > 0) {
-      console.log(result.multiHandLandmarks[0][8]);
-      console.log("x:", result.multiHandLandmarks[0][8].x * window.innerWidth);
       setCorX(result.multiHandLandmarks[0][8].x * window.innerWidth);
-      console.log("y:", result.multiHandLandmarks[0][8].y * window.innerHeight);
       setCorY(result.multiHandLandmarks[0][8].y * window.innerHeight);
-      localStorage.setItem("corX", result.multiHandLandmarks[0][8].x * window.innerWidth);
-      localStorage.setItem("corY", result.multiHandLandmarks[0][8].y * window.innerHeight);
+      localStorage.setItem(
+        "corX",
+        result.multiHandLandmarks[0][8].x * window.innerWidth
+      );
+      localStorage.setItem(
+        "corY",
+        result.multiHandLandmarks[0][8].y * window.innerHeight
+      );
     }
   }
   useEffect(() => {

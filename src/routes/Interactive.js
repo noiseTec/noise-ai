@@ -12,7 +12,7 @@ import ArtworkLink from "../components/shared/ArtworkLink";
 import { ArtWork01Component } from "../components/artworks/ArtWork01Component";
 import BackHomeArrow from "../components/shared/BackHomeArrow";
 import { Greater } from "../assets/icon";
-import  ArtWork02Component  from "../components/artworks/ArtWork02Component";
+import ArtWork02Component from "../components/artworks/ArtWork02Component";
 import { ArtWork03Component } from "../components/artworks/Artwork03Component";
 import { ArtWork04Component } from "../components/artworks/Artwork04Component";
 import ArtWork05Component from "../components/artworks/Artwork05Component";
@@ -22,7 +22,11 @@ const Interactive = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [selected, setSelected] = useState("song");
+  const [selected, setSelected] = useState(() => {
+    const initialState = location.pathname.split("/")[2];
+    if (initialState) return initialState;
+    else return "song";
+  });
   document.onmousemove = handleMouseMove;
 
   function handleMouseMove(event) {
