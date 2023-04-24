@@ -16,7 +16,6 @@ import ArtWork02Component from "../components/artworks/ArtWork02Component";
 import { ArtWork03Component } from "../components/artworks/Artwork03Component";
 import ArtWork04Component from "../components/artworks/Artwork04Component";
 import ArtWork05Component from "../components/artworks/Artwork05Component";
-import DetectorComponent from "../components/detector/DetectorComponent";
 
 const Interactive = () => {
   const location = useLocation();
@@ -25,7 +24,7 @@ const Interactive = () => {
   const [selected, setSelected] = useState(() => {
     const initialState = location.pathname.split("/")[2];
     if (initialState) return initialState;
-    else return "song";
+    else return "nghia";
   });
   document.onmousemove = handleMouseMove;
 
@@ -59,7 +58,7 @@ const Interactive = () => {
   useEffect(() => {
     if (location.pathname === "/interactive")
       setTimeout(() => {
-        navigate("song");
+        navigate("nghia");
       }, 400);
   }, [location.pathname, navigate]);
 
@@ -187,7 +186,7 @@ const Interactive = () => {
               <Route path="/nghia" element={<ArtWork02Component />} />
               <Route path="/viu" element={<ArtWork03Component />} />
               <Route path="/boi" element={<ArtWork04Component />} />
-              <Route path="/vuong" element={<ArtWork05Component />} />
+              <Route path="/vung" element={<ArtWork05Component />} />
             </Routes>
           </AnimatePresence>
         </div>
