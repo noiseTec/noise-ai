@@ -21,7 +21,7 @@ const Ripple = (props) => {
   const { enabled = true } = props;
 
   const shaderRef = useRef(null);
-  console.log(shaderRef.current);
+  // console.log(shaderRef.current);
   const rippleTexture = useTexture(publicPath("/assets/textures/brush.png"));
   const effect = useMemo(
     () => new RippleRenderer(rippleTexture),

@@ -4,9 +4,9 @@ import { MediaPineHandDetect } from "../mediaPipe/MediaPineHandDetect";
 import { useEffect } from "react";
 const DetectorComponent = () => {
   const [webcamRef, canvasRef] = MediaPineHandDetect();
-  useEffect(() => {
-    console.log(webcamRef);
-  })
+  // useEffect(() => {
+  //   // console.log(webcamRef);
+  // });
   return (
     <div>
       <center>

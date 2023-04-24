@@ -104,20 +104,16 @@ import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import { useState } from "react";
 
-export default function ArtWork05Component() {
+export default function ArtWork02Component() {
   // create a reference to the container in which the p5 instance should place the canvas
   const p5ContainerRef = useRef();
 
   const webCamRef = useRef(null);
   var camera = null;
-  const [corX, setCorX] = useState(0);
-  const [corY, setCorY] = useState(0);
 
   function onResults(result) {
     // console.log(result)
     if (result.multiHandLandmarks.length > 0) {
-      setCorX(result.multiHandLandmarks[0][8].x * window.innerWidth);
-      setCorY(result.multiHandLandmarks[0][8].y * window.innerHeight);
       localStorage.setItem(
         "corX",
         result.multiHandLandmarks[0][8].x * window.innerWidth
