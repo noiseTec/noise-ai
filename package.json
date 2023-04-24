@@ -19,6 +19,7 @@
     "framer-motion": "^10.12.0",
     "leva": "^0.9.34",
     "nice-color-palettes": "^3.0.0",
+    "p5": "^1.6.0",
     "p5js": "^1.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
