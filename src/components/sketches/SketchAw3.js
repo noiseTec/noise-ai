@@ -23,7 +23,7 @@ export default function SketchAw3(p) {
 
     p.draw = () => {
         p.background(0);
-        let m = p.createVector((corX*-1)+1550, corY);
+        let m = p.createVector((corX*-1)+window.innerWidth, corY);
         for (let i = 0; i < nb; i++) {
             for (let j = 0; j < nb; j++) {
                 p.stroke(200 + p.cos(p.radians(i + a * 5)) * 55 / 2, 155 + p.sin(p.radians(j + a * 3)) * 50, 255 / 2 + p.sin(p.radians(a)) * 255 / 2);
