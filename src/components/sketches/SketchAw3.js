@@ -1,6 +1,6 @@
 export default function SketchAw3(p) {
-    const nb = 30;
-    const step = 30;
+    const nb = 40;
+    const step = 35;
     const DIST = 100;
     const DISTORTION = 50;
     let parts = Array(nb).fill().map(() => Array(nb));
@@ -10,10 +10,10 @@ export default function SketchAw3(p) {
     let corY = 0;
 
     p.setup = () => {
-        p.createCanvas(1000, 1000);
+        p.createCanvas(1550, 775);
         let dx = (p.width - nb * step) / 2;
-        corX = p.getItem('corX');
-        corY = p.getItem('corY');
+        corX = -p.getItem('corX');
+        corY = -p.getItem('corY');
         for (let i = 0; i < nb; i++) {
             for (let j = 0; j < nb; j++) {
                 parts[i][j] = new Part(i * step + dx, j * step + dx);
@@ -23,7 +23,7 @@ export default function SketchAw3(p) {
 
     p.draw = () => {
         p.background(0);
-        let m = p.createVector(corX, corY);
+        let m = p.createVector((corX*-1)+window.innerWidth, corY);
         for (let i = 0; i < nb; i++) {
             for (let j = 0; j < nb; j++) {
                 p.stroke(200 + p.cos(p.radians(i + a * 5)) * 55 / 2, 155 + p.sin(p.radians(j + a * 3)) * 50, 255 / 2 + p.sin(p.radians(a)) * 255 / 2);
@@ -50,12 +50,12 @@ export default function SketchAw3(p) {
             tmp.normalize();
 
             if (d < DIST) {
-                p.strokeWeight(1 + 40 * p.abs(p.cos(c / 2)));
+                p.strokeWeight(1 + 50 * p.abs(p.cos(c / 2)));
                 if (!mode) {
                     tmp.mult(DISTORTION * p.sin(c));
                 }
             } else {
-                p.strokeWeight(p.map(p.min(d, p.width), 0, p.width, 5, 10));
+                p.strokeWeight(p.map(p.min(d, p.width), 0, p.width, 5, 20));
                 //p.strokeWeight(12);
             }
 
