@@ -14,7 +14,7 @@ export default function SketchAw4(p) {
   p.draw = () => {
     p.background(0);
     let which = p.frameCount % num;
-    mx[which] = p.getItem("corX");
+    mx[which] = p.getItem("corX")*-1+window.innerWidth;
     my[which] = p.getItem("corY");
     //num = speed;
 
