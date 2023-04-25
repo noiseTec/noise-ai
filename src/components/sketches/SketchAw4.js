@@ -1,5 +1,5 @@
 export default function SketchAw4(p) {
-  let num = 200;
+  let num = 300;
   let mx = [];
   let my = [];
   let speeds = [];
@@ -21,7 +21,7 @@ export default function SketchAw4(p) {
     //num = speed;
 
     for (let i = 0; i < num; i++) {
-      let index = (which + 25 + i) % num;
+      let index = (which + 30 + i) % num;
       p.ellipse(mx[index], my[index], i, i);
     }
   };
