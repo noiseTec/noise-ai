@@ -12,17 +12,20 @@ import ArtworkLink from "../components/shared/ArtworkLink";
 import { ArtWork01Component } from "../components/artworks/ArtWork01Component";
 import BackHomeArrow from "../components/shared/BackHomeArrow";
 import { Greater } from "../assets/icon";
-import { ArtWork02Component } from "../components/artworks/ArtWork02Component";
+import ArtWork02Component from "../components/artworks/ArtWork02Component";
 import { ArtWork03Component } from "../components/artworks/Artwork03Component";
-import { ArtWork04Component } from "../components/artworks/Artwork04Component";
+import ArtWork04Component from "../components/artworks/Artwork04Component";
 import ArtWork05Component from "../components/artworks/Artwork05Component";
-import DetectorComponent from "../components/detector/DetectorComponent";
 
 const Interactive = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [selected, setSelected] = useState("song");
+  const [selected, setSelected] = useState(() => {
+    const initialState = location.pathname.split("/")[2];
+    if (initialState) return initialState;
+    else return "nghia";
+  });
   document.onmousemove = handleMouseMove;
 
   function handleMouseMove(event) {
@@ -55,7 +58,7 @@ const Interactive = () => {
   useEffect(() => {
     if (location.pathname === "/interactive")
       setTimeout(() => {
-        navigate("song");
+        navigate("nghia");
       }, 400);
   }, [location.pathname, navigate]);
 
@@ -173,9 +176,9 @@ const Interactive = () => {
             </button>
           </div>
         </div>
-        <div style={{ position: "fixed", zIndex: 10000 }}>
+        {/* <div style={{ position: "fixed", zIndex: 10000 }}>
           <DetectorComponent />
-        </div>
+        </div> */}
         <div className="main-content grow overflow-hidden flex flex-col">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
@@ -183,7 +186,7 @@ const Interactive = () => {
               <Route path="/nghia" element={<ArtWork02Component />} />
               <Route path="/viu" element={<ArtWork03Component />} />
               <Route path="/boi" element={<ArtWork04Component />} />
-              <Route path="/vuong" element={<ArtWork05Component />} />
+              <Route path="/vung" element={<ArtWork05Component />} />
             </Routes>
           </AnimatePresence>
         </div>

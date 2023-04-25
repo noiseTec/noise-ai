@@ -43,7 +43,7 @@ const VideoComponent = () => {
   );
   useEffect(() => {
     window.addEventListener("mousemove", updateMousePosition, false);
-    console.log(mousePosition);
+    // console.log(mousePosition);
     return () => {
       window.removeEventListener("mousemove", updateMousePosition, false);
     };
