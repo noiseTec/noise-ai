@@ -2,12 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import noiseLogo from "../assets/logo.png";
 import Layout from "../components/shared/Layout";
+import DetectorComponent from "../components/detector/DetectorComponent";
 
 const Home = () => {
   return (
     <Layout>
       <div className="flex flex-col w-full h-full items-center justify-center pb-10">
         <div className="grow flex items-center justify-center">
+          <DetectorComponent />
           <img src={noiseLogo} alt="noise-logo" className="max-h-[596px]" />
         </div>
         <Link
