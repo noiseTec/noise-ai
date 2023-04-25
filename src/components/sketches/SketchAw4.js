@@ -8,7 +8,9 @@ export default function SketchAw4(p) {
 
   p.setup = () => {
     p.createCanvas(width, height);
-    p.fill(255, 999);
+      p.stroke(0);
+      p.strokeWeight(10);
+      p.fill(255);
   };
 
   p.draw = () => {
