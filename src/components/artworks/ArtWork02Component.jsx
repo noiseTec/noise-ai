@@ -167,7 +167,10 @@ export default function ArtWork02Component() {
           height: window.innerHeight,
         }}
       />
-      <div className="Artwork3" ref={p5ContainerRef}></div>
+      <div
+        className="Artwork3 flex items-center justify-center w-full h-full"
+        ref={p5ContainerRef}
+      ></div>
     </>
   );
 }
