@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import SketchAw3 from "../sketches/SketchAw3";
+import SketchAw2 from "../sketches/SketchAw2";
 import p5 from "p5";
 import { Hands } from "@mediapipe/hands";
 import * as cam from "@mediapipe/camera_utils";

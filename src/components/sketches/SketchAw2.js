@@ -10,8 +10,6 @@ export default function SketchAw3(p) {
   let a = 0;
   let corX = 0;
   let corY = 0;
-  let width = window.innerWidth;
-  let height = window.innerHeight;
 
   p.setup = () => {
     p.createCanvas(1550, 775);
