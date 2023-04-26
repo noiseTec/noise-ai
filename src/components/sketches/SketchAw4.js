@@ -1,5 +1,5 @@
 export default function SketchAw4(p) {
-  let num = 200;
+  let num = 300;
   let mx = [];
   let my = [];
   let speeds = [];
@@ -8,18 +8,20 @@ export default function SketchAw4(p) {
 
   p.setup = () => {
     p.createCanvas(width, height);
-    p.fill(255, 999);
+      p.stroke(0);
+      p.strokeWeight(10);
+      p.fill(255);
   };
 
   p.draw = () => {
     p.background(0);
     let which = p.frameCount % num;
-    mx[which] = p.getItem("corX");
+    mx[which] = p.getItem("corX")*-1+window.innerWidth;
     my[which] = p.getItem("corY");
     //num = speed;
 
     for (let i = 0; i < num; i++) {
-      let index = (which + 25 + i) % num;
+      let index = (which + 30 + i) % num;
       p.ellipse(mx[index], my[index], i, i);
     }
   };
