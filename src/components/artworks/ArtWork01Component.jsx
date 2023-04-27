@@ -34,7 +34,7 @@ void main()	{
 	gl_FragColor = vec4(offset.r,0.,0.,1.);
 	gl_FragColor = color;
 	gl_FragColor = texture2D(uTexture,newUV - 0.02*offset.rg);
-	// gl_FragColor = offset;
+	// // gl_FragColor = offset;
 
 }
 `;
@@ -59,9 +59,7 @@ const VideoComponent = () => {
     vY: 0,
   });
   const [size, setSize] = useState(15);
-  // const [texture, setTexture] = useState();
   const mesh = useRef();
-  //setup texture
   let videoTexture = useMemo(() => {
     const video = document.createElement("video");
     video.src = "/artwork1.mp4";
@@ -143,13 +141,11 @@ const VideoComponent = () => {
         }
       }
     }
-    console.log(uniforms);
     texture.needsUpdate = true;
     if (uniforms && texture) {
       uniforms.uDataTexture.value = texture;
       uniforms.uDataTexture.value.needsUpdate = true;
     }
-    console.log(uniforms);
   }
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -172,14 +168,14 @@ const VideoComponent = () => {
     <mesh ref={mesh} scale={1.5}>
       <planeGeometry args={[10, 5]} />
       <shaderMaterial
-        fragmentShader={fragment}
-        vertexShader={vertex}
+        // fragmentShader={fragment}
+        // vertexShader={vertex}
         uniforms={uniforms}
         extensions={extensions}
         side={THREE.DoubleSide}
         wireframe={false}
       />
-      {/* <meshBasicMaterial map={videoTexture} />  */}
+      <meshBasicMaterial map={videoTexture} />
     </mesh>
   );
 };
