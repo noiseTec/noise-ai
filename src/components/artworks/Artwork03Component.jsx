@@ -1,99 +1,96 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-import vertex from "./shader/vertex.glsl";
-import fragment from "./shader/fragment.glsl";
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import { useSelector } from "react-redux";
-import { Vector2, Color } from "three";
-import { easing } from "maath";
-import { Effect } from "../Effect";
-const VideoComponent = () => {
-  const mesh = useRef();
-  const mousePosition = useRef({ x: 0, y: 0 });
-  const updateMousePosition = useCallback((e) => {
-    mousePosition.current = { x: e.pageX, y: e.pageY };
+import { useCallback } from "react";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+export default function Artwork03Component() {
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine);
+    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(engine);
   }, []);
 
-  const video = document.createElement("video");
-  video.src = "/artwork3.mp4";
-  video.autoplay = true;
-  video.loop = true;
-  document.addEventListener(
-    "click",
-    () => {
-      video.play();
-    },
-    { once: true }
-  );
-  const videoTexture = new THREE.VideoTexture(video);
-  videoTexture.needsUpdate = true;
-  const uniforms = useMemo(
-    () => ({
-      u_time: {
-        value: 0.0,
-      },
-      u_mouse: { value: new Vector2(0, 0) },
-      u_bg: {
-        value: new Color("#A1A3F7"),
-      },
-      u_colorA: { value: new Color("#9FBAF9") },
-      u_colorB: { value: new Color("#FEB3D9") },
-    }),
-    []
-  );
-  useEffect(() => {
-    window.addEventListener("mousemove", updateMousePosition, false);
-    // console.log(mousePosition);
-    return () => {
-      window.removeEventListener("mousemove", updateMousePosition, false);
-    };
-  }, [updateMousePosition]);
+  const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+  }, []);
 
-  const extensions = {
-    derivatives: "#extension GL_OES_standard_derivatives : enable",
-  };
   return (
-    <mesh ref={mesh} scale={1.5}>
-      <planeGeometry args={[10, 5]} />
-      <shaderMaterial
-        fragmentShader={fragment}
-        vertexShader={vertex}
-        uniforms={uniforms}
-        extensions={extensions}
-        side={THREE.DoubleSide}
-        wireframe={false}
-      />
-      <meshBasicMaterial map={videoTexture} />
-    </mesh>
-  );
-};
-export const ArtWork03Component = () => {
-  function Rig({ radius = 20 }) {
-    const positionPoint = useSelector((state) => state.handPoint);
-    useEffect(() => {}, [positionPoint]);
-    useFrame((state, dt) => {
-      easing.damp3(
-        state.camera.position,
-        [
-          Math.sin(state.pointer.x) * radius,
-          Math.atan(state.pointer.y) * radius,
-          Math.cos(state.pointer.x) * radius,
-        ],
-        0.9,
-        dt
-      );
-      state.camera.lookAt(0, 0, 0);
-    });
-  }
-  return (
-    <Canvas
-      gl={{
-        pixelRatio: Math.min(window.devicePixelRatio, 2),
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={{
+        background: {
+          color: {
+            value: "#000000",
+          },
+        },
+        fpsLimit: 120,
+        interactivity: {
+          events: {
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
+            onHover: {
+              enable: true,
+              mode: "repulse",
+            },
+            resize: true,
+          },
+          modes: {
+            push: {
+              quantity: 4,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+          },
+        },
+        particles: {
+          color: {
+            value: "#ffffff",
+          },
+          links: {
+            color: "#ffffff",
+            distance: 150,
+            enable: true,
+            opacity: 0.5,
+            width: 1,
+          },
+          collisions: {
+            enable: true,
+          },
+          move: {
+            directions: "none",
+            enable: true,
+            outModes: {
+              default: "bounce",
+            },
+            random: false,
+            speed: 6,
+            straight: false,
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800,
+            },
+            value: 80,
+          },
+          opacity: {
+            value: 0.5,
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: { min: 1, max: 5 },
+          },
+        },
+        detectRetina: true,
       }}
-    >
-      {/* <Rig /> */}
-      <VideoComponent />
-      <Effect />
-    </Canvas>
+    />
   );
-};
+}
