@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 // import { Effects } from "@react-three/drei";
 import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass";
 import DetectorComponent from "../detector/DetectorComponent";
+import { publicPath } from "../utils/file";
 const vertex = `
 uniform float time;
 varying vec2 vUv;
@@ -62,7 +63,8 @@ const VideoComponent = () => {
   const mesh = useRef();
   let videoTexture = useMemo(() => {
     const video = document.createElement("video");
-    video.src = "/artwork1.mp4";
+    video.src = publicPath("/artwork1.mp4");
+    console.log(video);
     video.autoplay = true;
     video.loop = true;
     document.addEventListener(
