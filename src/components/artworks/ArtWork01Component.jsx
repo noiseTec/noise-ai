@@ -1,10 +1,9 @@
 import { Canvas, extend } from "@react-three/fiber";
 import * as THREE from "three";
 import { useEffect, useMemo, useRef, useState } from "react";
-// import { Effects } from "@react-three/drei";
+import src from "../../assets/video/artwork1.mp4";
 import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass";
 import DetectorComponent from "../detector/DetectorComponent";
-import { publicPath } from "../utils/file";
 const vertex = `
 uniform float time;
 varying vec2 vUv;
@@ -63,7 +62,7 @@ const VideoComponent = () => {
   const mesh = useRef();
   let videoTexture = useMemo(() => {
     const video = document.createElement("video");
-    video.src = publicPath("/artwork1.mp4");
+    video.src = src;
     console.log(video);
     video.autoplay = true;
     video.loop = true;
