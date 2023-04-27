@@ -1,7 +1,11 @@
 //import { loadImg } from "../utils/imageLoader";
 import { logoImage } from "../utils/image";
-//import { spawnParticles } from "../utils/imageLoader";
-import { Particle } from "../utils/particle";
+//import { spawnParticles } from "../utils/imageLoader";import p5 from "p5"
+
+const MIN_FORCE = 0.75;
+const MAX_FORCE = 0.95;
+const REPULSION_RADIUS = 125;
+const REPULSION_STRENGTH = 0.325;
 
 const MIN_PARTICLE_COUNT = 1000;
 const MAX_PARTICLE_COUNT = 1100;
@@ -20,11 +24,15 @@ let maxSize = 0;
 let img;
 let res = [];
 let mouse = "";
+let corX = 0;
+let corY = 0;
 
 export default function SketchHome(p) {
   p.setup = () => {
     p.createCanvas(width, height);
     particles = loadImg(logoImage, p);
+    corX = -p.getItem("corX");
+    corY = -p.getItem("corY");
     // mouse = new Mouse();
   };
 
@@ -62,6 +70,9 @@ export default function SketchHome(p) {
 
     p.rectMode(p.CENTER);
     p.pop();
+    corX = p.getItem("corX");
+    corY = p.getItem("corY");
+
   };
 }
 
@@ -79,8 +90,8 @@ export function loadImg(displayImage, p) {
 function setupImg() {
   indices = [];
 
-  for (let x = 0; x < img.width; x += IMG_SCAN_STEPS * 4) {
-    for (let y = 0; y < img.height; y += IMG_SCAN_STEPS * 4) {
+  for (let x = 0; x < img.width*1.5; x += IMG_SCAN_STEPS * 4) {
+    for (let y = 0; y < img.height*1.5; y += IMG_SCAN_STEPS * 4) {
       let index = (x + y * img.width) * 4;
 
       let a = img.pixels[index + 3];
@@ -163,4 +174,56 @@ export function spawnParticles(particleColor, p) {
       particles.push(newParticle);
     }
   }
+}
+class Particle {
+	constructor(img, _x, _y, _size, _color, p) {
+		this.pos = p.createVector(img.width / 2, img.height / 2);
+		this.vel = p.createVector(0, 0);
+		this.acc =  p.createVector(0, 0);
+		this.target =  p.createVector(_x, _y);
+		this.size = _size;
+		this.mapped_angle = p.map(_x, 0, img.width, -180, 180) + p.map(_y, 0, img.height, -180, 180);
+		this.color = _color;
+		this.maxForce = p.random(MIN_FORCE, MAX_FORCE);
+
+		this.goToTarget = function () {
+			let steer =  p.createVector(this.target.x, this.target.y);
+
+			let distance = p.dist(this.pos.x, this.pos.y, this.target.x, this.target.y);
+			if (distance > 0.5) {
+				let distThreshold = 20;
+				steer.sub(this.pos);
+				steer.normalize();
+				steer.mult(p.map(p.min(distance, distThreshold), 0, distThreshold, 0, this.maxForce));
+				this.acc.add(steer);
+			}
+		};
+
+		this.avoidMouse = function () {
+			let mx = corX;
+			let my = corY;
+
+			let mouseDistance = p.dist(this.pos.x, this.pos.y, mx, my);
+
+			if (mouseDistance < REPULSION_RADIUS) {
+				let repulse =  p.createVector(this.pos.x, this.pos.y);
+				repulse.sub(mx, my);
+				repulse.mult(p.map(mouseDistance, REPULSION_RADIUS, 0, 0, REPULSION_STRENGTH));
+				this.acc.add(repulse);
+			}
+
+		};
+
+		this.move = function () {
+			this.goToTarget();
+
+			this.avoidMouse();
+
+			this.vel.mult(0.95);
+
+			this.vel.add(this.acc);
+			this.pos.add(this.vel);
+			this.acc.mult(0);
+		};
+	}
 }
