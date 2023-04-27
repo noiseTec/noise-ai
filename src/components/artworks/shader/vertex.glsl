@@ -1,4 +1,4 @@
-const vertexShader = `
+
 varying vec2 vUv;
 
 void main() {
@@ -10,7 +10,3 @@ void main() {
 
   gl_Position = projectedPosition;
 }
-
-`
-
-export default vertexShader

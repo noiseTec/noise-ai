@@ -1,4 +1,3 @@
-const fragmentShader = `
 uniform float u_time;
 
 uniform vec3 u_bg;
@@ -94,7 +93,3 @@ void main() {
   
   gl_FragColor = vec4(color ,1.0);
 }
-
-`
-
-export default fragmentShader
