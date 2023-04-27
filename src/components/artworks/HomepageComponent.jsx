@@ -1,10 +1,8 @@
 import { useEffect, useRef } from "react";
-import SketchAw2 from "../sketches/SketchAw2";
 import p5 from "p5";
 import { Hands } from "@mediapipe/hands";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
-import { useState } from "react";
 import SketchHome from "../sketches/SketchHome";
 
 export default function HomepageComponent() {
