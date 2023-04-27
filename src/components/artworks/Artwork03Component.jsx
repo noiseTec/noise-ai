@@ -22,7 +22,7 @@ export default function Artwork03Component() {
       options={{
         background: {
           color: {
-            value: "#000000",
+            value: "#080808",
           },
         },
         fpsLimit: 120,

@@ -11,14 +11,13 @@ function App() {
   const [selected] = useState(location.pathname.split("/")[1]);
 
   const linkArr = ["interactive", "gallery", "artworks", "about"];
-
+  // ${
+  //   location.pathname.split("/")[1] !== "artworks"
+  //     ? "overflow-auto"
+  //     : "overflow-hidden"
   return (
     <main
-      className={`w-full h-full flex flex-col relative ${
-        location.pathname.split("/")[1] !== "artworks"
-          ? "overflow-auto"
-          : "overflow-hidden"
-      }`}
+      className={`w-full h-full flex flex-col relative overflow-hidden`}
     >
       {location.pathname.split("/")[1] !== "interactive" && (
         <div

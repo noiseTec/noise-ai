@@ -24,7 +24,9 @@ export default function SketchAw3(p) {
   };
 
   p.draw = () => {
-    p.background(0);
+    p.background("#080808");
+    p.fill(0);
+    p.noStroke();
     let m = p.createVector(corX * -1 + window.innerWidth, corY);
     for (let i = 0; i < nb; i++) {
       for (let j = 0; j < nb; j++) {

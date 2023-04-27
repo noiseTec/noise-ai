@@ -31,7 +31,7 @@ const Interactive = () => {
   function handleMouseMove(event) {
     const sideBar = document.getElementById("side-bar");
     if (sideBar) {
-      if (event.clientX <= 150) {
+      if (event.clientX <= 132) {
         sideBar.classList.add("active");
       }
       if (event.clientX >= 459) {
@@ -68,7 +68,7 @@ const Interactive = () => {
         <AnimatePresence mode="wait">
           <motion.div
             id="side-bar"
-            className="side-bar duration-300 w-[459px] sm:flex flex-col max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
+            className="side-bar duration-300 sm:flex flex-col max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
           >
             <div className="header p-8 border-b border-white flex justify-between gap-4 items-center relative">
               <BackHomeArrow />

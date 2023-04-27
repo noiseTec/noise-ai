@@ -8,15 +8,15 @@ export default function SketchAw4(p) {
 
   p.setup = () => {
     p.createCanvas(width, height);
-      p.stroke(0);
-      p.strokeWeight(10);
-      p.fill(255);
+    p.stroke(0);
+    p.strokeWeight(10);
+    p.fill(255);
   };
 
   p.draw = () => {
-    p.background(0);
+    p.background("#080808");
     let which = p.frameCount % num;
-    mx[which] = p.getItem("corX")*-1+window.innerWidth;
+    mx[which] = p.getItem("corX") * -1 + window.innerWidth;
     my[which] = p.getItem("corY");
     //num = speed;
 

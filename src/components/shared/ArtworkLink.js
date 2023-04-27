@@ -5,7 +5,7 @@ import { Greater } from "../../assets/icon";
 
 const ArtworkLink = ({ url, name, onClick, selected }) => {
   return (
-    <motion.div>
+    <motion.div className="hidden tab">
       <NavLink
         onClick={onClick}
         to={url}
@@ -17,7 +17,7 @@ const ArtworkLink = ({ url, name, onClick, selected }) => {
         </div>
         {selected && (
           <motion.div
-            className="description mt-4 pl-10 text-base"
+            className="description mt-4 pl-10 text-base description hidden"
             layoutId="description"
           >
             {url === "song" && (

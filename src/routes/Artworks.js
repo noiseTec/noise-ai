@@ -86,7 +86,7 @@ const Artworks = () => {
           <Greater className={"rotate-180"} />
         </button>
         <div
-          id="gallery-container"
+          id="artwork-container"
           className="h-full w-full px-6 sm:max-w-screen-sm items-center justify-center flex overflow-x-hidden overflow-auto relative"
         >
           <AnimatePresence initial={false} custom={direction}>

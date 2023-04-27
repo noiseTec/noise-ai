@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
       animate={{ opacity: 1, x: 0, y: 0 }}
       exit={{ opacity: 0, x: 20, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="grow"
+      className="grow overflow-auto"
     >
       {children}
     </motion.main>
