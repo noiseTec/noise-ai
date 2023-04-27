@@ -71,7 +71,7 @@ export default function SketchHome(p) {
 
     p.rectMode(p.CENTER);
     p.pop();
-    corX = p.getItem("corX");
+    corX = Math.abs(p.getItem("corX") - width/2);
     corY = p.getItem("corY");
 
   };
