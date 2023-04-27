@@ -7,6 +7,7 @@ export const MashComponent = (props) => {
       ref={canvasRef}
       className="output_canvas"
       style={cameraConfig}
+      hidden={true}
     ></canvas>
   );
 };
