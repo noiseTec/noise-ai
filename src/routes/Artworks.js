@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import Layout from "../components/shared/Layout";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -42,8 +43,35 @@ const variants = {
   },
 };
 
+const Modal = ({ url, setSelected }) => {
+  return ReactDOM.createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="modal w-full h-full fixed  top-0 left-0 z-20 flex items-center justify-center px-6"
+    >
+      <div
+        className="w-full h-full absolute backdrop bg-black opacity-80 top-0 left-0 cursor-pointer"
+        onClick={() => setSelected(null)}
+      ></div>
+      <img
+        src={url}
+        alt=""
+        className="opacity-100 z-30 border-2 border-white"
+      />
+    </motion.div>,
+    document.body
+  );
+};
+
 const Artworks = () => {
   const [[page, direction], setPage] = useState([0, 0]);
+
+  const [selected, setSelected] = useState(null);
+
+  const handleImageClick = (url) => {
+    setSelected(url);
+  };
 
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
@@ -81,11 +109,31 @@ const Artworks = () => {
               {slideIndex === 3 && <img src={Artwork04} />}
               {slideIndex === 4 && (
                 <div className="flex flex-col items-center justify-center gap-10">
-                  <img src={Artwork5_1} className="border-white border-4" />
-                  <img src={Artwork5_2} className="border-white border-4" />
-                  <img src={Artwork5_3} className="border-white border-4" />
-                  <img src={Artwork5_4} className="border-white border-4" />
-                  <img src={Artwork5_5} className="border-white border-4" />
+                  <img
+                    onClick={() => handleImageClick(Artwork5_1)}
+                    src={Artwork5_1}
+                    className="border-white border-4 cursor-pointer"
+                  />
+                  <img
+                    onClick={() => handleImageClick(Artwork5_2)}
+                    src={Artwork5_2}
+                    className="border-white border-4 cursor-pointer"
+                  />
+                  <img
+                    onClick={() => handleImageClick(Artwork5_3)}
+                    src={Artwork5_3}
+                    className="border-white border-4 cursor-pointer"
+                  />
+                  <img
+                    onClick={() => handleImageClick(Artwork5_4)}
+                    src={Artwork5_4}
+                    className="border-white border-4 cursor-pointer"
+                  />
+                  <img
+                    onClick={() => handleImageClick(Artwork5_5)}
+                    src={Artwork5_5}
+                    className="border-white border-4 cursor-pointer"
+                  />
                 </div>
               )}
               {slideIndex === 5 && (
@@ -108,6 +156,7 @@ const Artworks = () => {
           <Greater />
         </button>
       </div>
+      {selected !== null && <Modal url={selected} setSelected={setSelected} />}
     </Layout>
   );
 };
