@@ -1,5 +1,4 @@
 //import { loadImg } from "../utils/imageLoader";
-import noiseLogo from "../../assets/logo.png";
 import { logoImage } from "../utils/image";
 //import { spawnParticles } from "../utils/imageLoader";
 import { Particle } from "../utils/particle";
@@ -30,7 +29,7 @@ export default function SketchHome(p) {
   };
 
   p.draw = () => {
-    p.background("#000000");
+    p.background("#080808");
     p.fill(0);
     p.noStroke();
 
@@ -43,7 +42,7 @@ export default function SketchHome(p) {
     p.fill(0);
     p.noStroke();
 
-    p.rectMode(p.CENTER)
+    p.rectMode(p.CENTER);
 
     particles.forEach((particle) => {
       particle.move();
@@ -61,7 +60,7 @@ export default function SketchHome(p) {
       p.pop();
     });
 
-    p.rectMode(p.CENTER)
+    p.rectMode(p.CENTER);
     p.pop();
   };
 }

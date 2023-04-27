@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import { store } from './redux/store';
-import Home from './routes/Home';
-import Interactive from './routes/Interactive';
-import Gallery from './routes/Gallery';
-import About from './routes/About';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { store } from "./redux/store";
+import Home from "./routes/Home";
+import Interactive from "./routes/Interactive";
+import Gallery from "./routes/Gallery";
+import About from "./routes/About";
+import Artworks from "./routes/Artworks";
 
 const AnimatedRoute = () => {
   const location = useLocation();
@@ -24,16 +25,17 @@ const AnimatedRoute = () => {
       <Routes location={location} key={getPathKey(location.pathname)}>
         <Route element={<App />} path="/">
           <Route index element={<Home />} />
-          <Route element={<Interactive />} path="interactive/*" />
           <Route element={<Gallery />} path="gallery" />
           <Route element={<About />} path="about" />
+          <Route element={<Artworks />} path="artworks" />
+          <Route element={<Interactive />} path="interactive/*" />
         </Route>
       </Routes>
     </AnimatePresence>
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>

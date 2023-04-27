@@ -10,14 +10,20 @@ function App() {
 
   const [selected] = useState(location.pathname.split("/")[1]);
 
-  const linkArr = ["interactive", "gallery", "about"];
+  const linkArr = ["interactive", "gallery", "artworks", "about"];
 
   return (
-    <main className="w-full h-full flex flex-col relative overflow-x-hidden">
+    <main
+      className={`w-full h-full flex flex-col relative ${
+        location.pathname.split("/")[1] !== "artworks"
+          ? "overflow-auto"
+          : "overflow-hidden"
+      }`}
+    >
       {location.pathname.split("/")[1] !== "interactive" && (
         <div
           id="navbar"
-          className="flex gap-8 justify-center py-10 max-w-full sticky top-0"
+          className="flex gap-8 justify-center py-10 max-w-full sticky top-0 z-10"
         >
           <LayoutGroup>
             {linkArr.map((el, i) => (

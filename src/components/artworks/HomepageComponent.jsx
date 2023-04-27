@@ -44,7 +44,7 @@ export default function HomepageComponent() {
     if (typeof webCamRef !== "undefined" && webCamRef.current !== null) {
       camera = new cam.Camera(webCamRef.current.video, {
         onFrame: async () => {
-          await hands.send({ image: webCamRef.current.video });
+          await hands.send({ image: webCamRef.current?.video });
         },
         width: 400,
         height: 400,

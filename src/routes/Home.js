@@ -7,13 +7,13 @@ import HomepageComponent from "../components/artworks/HomepageComponent";
 const Home = () => {
   return (
     <Layout>
-      <div className="flex flex-col w-full h-full items-center justify-center pb-10">
-        <div className="grow flex items-center justify-center">
+      <div className="flex flex-col w-full h-full items-center justify-center pb-10 relative">
+        <div className="grow flex items-center justify-center fixed top-0">
           <HomepageComponent />
         </div>
         <Link
           to={"interactive"}
-          className="flex items-center justify-center font-semibold uppercase mt-auto"
+          className="flex items-center justify-center font-semibold uppercase mt-auto absolute bottom-[60px]"
         >
           Enter Exhibition
         </Link>
