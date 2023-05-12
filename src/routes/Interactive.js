@@ -48,11 +48,11 @@ const Interactive = () => {
   }
 
   const linkArray = [
-    { url: "song", name: "Song .9" },
+    // { url: "song", name: "Song .9" },
     { url: "nghia", name: "Nghia .8" },
-    { url: "viu", name: "Viu .8" },
+    // { url: "viu", name: "Viu .8" },
     { url: "boi", name: "Boi .9" },
-    { url: "vung", name: "Vung .7" },
+    // { url: "vung", name: "Vung .7" },
   ];
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const Interactive = () => {
         <AnimatePresence mode="wait">
           <motion.div
             id="side-bar"
-            className="side-bar duration-300 sm:flex flex-col max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
+            className="side-bar duration-300 hidden sm:flex flex-col max-w-full absolute top-0 left-0 overflow-auto bg-[#080808] h-full z-10"
           >
             <div className="header p-8 border-b border-white flex justify-between gap-4 items-center relative">
               <BackHomeArrow />
